@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=EB+Garamond:ital@0;1&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== Scroll scene (home only): sky → planet → dunes → page ===== -->
+  <section class="scene" id="scene" aria-label="Intro">
+    <div class="scene-sticky">
+      <div class="scene-sky"></div>
+
+      <!-- your illustration: the camera slowly pushes in toward the prince -->
+      <div class="scene-art" data-y="0.08" data-zoom="0.4" aria-hidden="true">
+        <img src="images/hero.jpg" alt="" />
+      </div>
+
+      <!-- extra golden stars drifting at their own speed for depth -->
+      <div class="scene-stars" id="scene-stars" data-y="0.3" aria-hidden="true"></div>
+
+      <div class="scene-title" data-y="-0.4" data-fade-out="0,0.35">
+        <h1>Jasmine Vu</h1>
+        <p>Come explore my portfolio!</p>
+      </div>
+
+
+      <!-- paper rises at the end and carries you into the page -->
+      <div class="dune dune-fore" data-y="-1.4" data-range="0.33,1"><svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0 120 C 260 50 560 40 760 70 S 1180 90 1440 40 V120Z"/></svg></div>
+
+      <p class="scroll-cue" data-fade-out="0,0.1">scroll to see my work ↓</p>
+    </div>
+  </section>
+
+  <div class="layout">
+    <!-- ===== Left sidebar: the night sky ===== -->
+    <aside class="sidebar">
+      <div class="stars" id="stars" aria-hidden="true"></div>
+
+      <a href="#/" class="avatar" aria-label="Home">[avatar]</a>
+
+      <nav class="main-nav">
+        <ol>
+          <li><a href="#/" data-route="/">home</a></li>
+          <li><a href="#/" data-scroll="work" data-route="work">work</a></li>
+          <li><a href="#/about" data-route="/about">about</a></li>
+        </ol>
+      </nav>
+
+      <!-- Case-study-only sidebar block; filled by script.js -->
+      <div id="sidebar-extra"></div>
+
+      <ul class="social">
+        <li><a href="resume.pdf" target="_blank" data-resume>resume</a></li>
+        <li><a href="https://www.linkedin.com/in/jasmin3-vu/" target="_blank" rel="noopener">linkedin</a></li>
+        <li><a href="mailto:you@example.com">email</a></li>
+        <li><a href="#" target="_blank">github</a></li>
+      </ul>
+
+      <!-- Little planet with a rose -->
+      <div class="planet-wrap" aria-hidden="true">
+        <svg class="planet" viewBox="0 0 200 150">
+          <!-- rose -->
+          <path d="M100 52 C 99 40, 101 34, 100 26" stroke="#5f8a5a" stroke-width="2" fill="none" />
+          <path d="M100 44 q -9 -4 -12 -10 q 8 1 12 6" fill="#6f9a66" />
+          <path d="M93 22 q 7 -12 14 0 q -2 8 -7 8 q -5 0 -7 -8z" fill="#d9534f" />
+          <path d="M96 20 q 4 -6 8 0" stroke="#a83a37" stroke-width="1.2" fill="none" />
+          <!-- tiny volcano -->
+          <path d="M138 58 l 8 -12 h 8 l 8 12z" fill="#b98a5e" />
+          <circle cx="150" cy="40" r="2" fill="#f2d48a" opacity=".6" />
+          <!-- planet -->
+          <circle cx="100" cy="120" r="66" fill="url(#pg)" />
+          <circle cx="76" cy="104" r="7" fill="#d9b989" opacity=".7" />
+          <circle cx="122" cy="132" r="10" fill="#d9b989" opacity=".6" />
+          <circle cx="96" cy="150" r="5" fill="#d9b989" opacity=".6" />
+          <defs>
+            <radialGradient id="pg" cx="40%" cy="30%">
+              <stop offset="0%" stop-color="#f6e2b8" />
+              <stop offset="100%" stop-color="#e2b77a" />
+            </radialGradient>
+          </defs>
+        </svg>
+        <p class="clock" id="clock">--:--:--</p>
+      </div>
+    </aside>
+
+    <!-- ===== Main content (swapped by router) ===== -->
+    <main id="app" class="content"></main>
+  </div>
+
+  <footer class="site-footer">
+    <a href="#" data-scroll="top">↑ back to the stars</a>
+    <p>© Jasmine Vu · drawn &amp; built by me</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
